@@ -9,8 +9,7 @@ import matplotlib.pyplot as plt
 
 class GeneticFS():
     """
-    Built to be compatible with sci-kit learn library for both regression and classification models
-    This is designed to help with feature selection in highly dimensional datasets
+    Custom genetic algorithm for feature selection
     """
 
     def __init__(self, mutation_rate = 0.001, iterations = 100, pool_size = 50):
