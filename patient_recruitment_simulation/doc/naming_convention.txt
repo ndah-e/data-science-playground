@@ -1,0 +1,14 @@
+Naming Conventions
+Table names are all plural. (ie. studies, facilities, interventions, etc.)
+Column names are all singular. (ie. description, phase, name, etc.)
+Table/column names derived from multiple words are delimited with underscores. (ie. mesh_term, study_first_submitted_date, number_of_groups, etc.)
+Case (upper vs lower) is not relevant since PostgreSQL ignores case. Studies, STUDIES and studies all represent the same table and can be used interchangably.
+Information about study design entered into ClinicalTrials.gov during registration is stored in AACT tables prefixed with Design_ to distinguish it from the results data. For example, the Design_Groups table contains registry information about anticipated participant groups, whereas the Result_Groups table contains information that was entered after the study has completed to describe actual participant groups. Design_Outcomes contains information about the outcomes to be measured and Outcomes contains info about the actual outcomes reported when the study completed.
+Where possible, tables & columns are given fully qualified names; abbreviations are avoided. (ie. description rather than desc; category rather than ctgry)
+Unnecssary and duplicate verbiage is avoided. For example: Studies.source instead of Studies.study_source
+Columns that end with _id represent foreign keys. The prefix to the _id suffix is always the singular name of the parent table to which the child table is related. These foreign keys always link to the id column of the parent table.
+Child_Table.parent_table_id = Parent_Tables.id
+
+For example, a row in Facility_Contacts links to it’s facility through the facility_id column.
+
+Facility_Contacts.facility_id = Facilities.id
